@@ -1,4 +1,4 @@
-#Week 3 Assignment - Python
+#Week 3 Assignment - PyBank 
 #Dale Munroe
 
 #Module for reading CSV files
@@ -8,6 +8,8 @@ from fileinput import close
 import os
 
 import csv
+
+
 
 
 import_file = os.path.join('Resources','budget_data.csv')
@@ -83,30 +85,18 @@ with open(import_file, encoding='utf-8') as import_data:
 
 
 
-
-
 #-------------------------------------------------------------------------------
 
-# Open the file in "read" mode ('r') and store the contents in the variable "text"
-with open(export_file, 'w') as f:
-    output = (
-        f.write("Financial Analysis")
-        f.write("-"*80)
-        f.write("Total Months: " + str(total_mths))
-        f.write("Total: " + str(net_PandL))
-        f.write("Average Change: " + str(net_mthly_avg))
-        f.write("Greatest Increase in Profits: " + str(max_profit_increase))
-        f.write("Greatest_Decrease in Profits: " + str(max_profit_decrease))
-        f.close()
-    )
+# Write *.txt file
 
+lines = ["Financial Analysis", 
+        "-"*80, "Total Months: " + str(total_mths), 
+        "Total: " + str(net_PandL), 
+        "Average Change: " + str(net_mthly_avg), 
+        "Greatest Increase in Profits: " + str(max_profit_increase), 
+        "Greatest_Decrease in Profits: " + str(max_profit_decrease)]
 
-report_text = (
-    print("Financial Analysis")
-    print("-"*80)
-    print("Total Months: " + str(total_mths))
-    print("Total: " + str(net_PandL))
-    print("Average Change: " + str(net_mthly_avg))
-    print("Greatest Increase in Profits: " + str(max_profit_increase))
-    print("Greatest_Decrease in Profits: " + str(max_profit_decrease))
-)
+with open(export_file, 'w') as datafile:
+    for line in lines:
+        datafile.write(line)
+        datafile.write('\n')
