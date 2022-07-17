@@ -49,7 +49,7 @@ with open(import_file, encoding='utf-8') as import_data:
 
 
 #------------------------------------------------------------------------------
-#option 3
+#Candidate calculation inside candidate_list loop
 
 
 for candidate in candidates_list:
