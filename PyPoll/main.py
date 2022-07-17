@@ -57,6 +57,7 @@ for candidate in candidates_list:
     candidate_pecentage_list = []
     candidate_count_list = []
     candidate_count = 0
+    indexes = [1, 2, 3]
     
 
 # Read CSV into a Dictionary
@@ -82,9 +83,9 @@ for candidate in candidates_list:
     print(candidate_pecentage_list)        
     print(candidate_count_list)
 
-report_list = zip(candidates_list, candidate_pecentage_list, candidate_count_list)
+report_list = zip(indexes, candidates_list, candidate_pecentage_list, candidate_count_list)
 
-for Cand in report_list:
+for name in report_list:
     print(report_list)
 
 #-------------------------------------------------------------------------------
@@ -97,13 +98,15 @@ print("-"*80)
 print("Total Votes Cast: " + str(total_votes_cast))
 print("-"*80)
 print(report_list)
-
+print("-"*80)
+print ("Winner: " + winner)
+print("-"*80)
 
 #-------------------------------------------------------------------------------
 
 # Write *.txt file
 
-lines = ["Election Results: ", "-"*80, "Total Votes Cast: " + str(total_votes_cast), "-"*80, str(report_list)]
+lines = ["Election Results: ", "-"*80, "Total Votes Cast: " + str(total_votes_cast), "-"*80, str(report_list), "-"*80, "Winner: " winner, "-"*80]
 with open(export_file, 'w') as datafile:
     for line in lines:
         datafile.write(line)
