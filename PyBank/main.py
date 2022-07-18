@@ -79,9 +79,9 @@ with open(import_file, encoding='utf-8') as import_data:
     print("-"*80)
     print("Total Months: " + str(total_mths))
     print("Total: $" + str(net_PandL))
-    print("Average Change: " + str(net_mthly_avg))
-    print("Greatest Increase in Profits: " + str(max_profit_increase [0]) + " (" + str(max_profit_increase[1]) + ")")
-    print("Greatest_Decrease in Profits: " + str(max_profit_decrease [0]) + " (" + str(max_profit_decrease[1]) + ")")
+    print("Average Change: $" + str(net_mthly_avg))
+    print("Greatest Increase in Profits: " + str(max_profit_increase [0]) + " ($" + str(max_profit_increase[1]) + ")")
+    print("Greatest_Decrease in Profits: " + str(max_profit_decrease [0]) + " ($" + str(max_profit_decrease[1]) + ")")
 
 
 
@@ -92,9 +92,9 @@ with open(import_file, encoding='utf-8') as import_data:
 lines = ["Financial Analysis", 
         "-"*80, "Total Months: " + str(total_mths), 
         "Total: $" + str(net_PandL), 
-        "Average Change: " + str(net_mthly_avg), 
-        "Greatest Increase in Profits: " + str(max_profit_increase [0]) + " (" + str(max_profit_increase[1]) + ")",
-        "Greatest_Decrease in Profits: " + str(max_profit_decrease [0]) + " (" + str(max_profit_decrease[1]) + ")"]
+        "Average Change: $" + str(net_mthly_avg), 
+        "Greatest Increase in Profits: " + str(max_profit_increase [0]) + " ($" + str(max_profit_increase[1]) + ")",
+        "Greatest_Decrease in Profits: " + str(max_profit_decrease [0]) + " ($" + str(max_profit_decrease[1]) + ")"]
 
 with open(export_file, 'w') as datafile:
     for line in lines:
