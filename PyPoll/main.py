@@ -20,7 +20,7 @@ total_votes_cast = 0
 
 candidates_list = []
 candidate_votes = []
-winner = ["",0]
+max_candidate_count = ["",0]
 
 
 # Read CSV into a Dictionary
@@ -83,13 +83,19 @@ for candidate in candidates_list:
         candidate_percentage_list.append(percentage_of_votes)
         #print(candidate_percentage_list)
         candidate_count_list.append(candidate_count)
-        
+                
+        #MWinning Candidate
+        if candidate_count > max_candidate_count [1]:   #tests if the value is greater and if true, 
+            max_candidate_count  [0] = candidate        #returns the Winners Name row 1
+            max_candidate_count [1] = candidate_count  #returns the Number of Votes to row 2
+
         #reset the counts to 0
         percentage_of_votes = 0
         candidate_count = 0
 
         #print(candidate_percentage_list)        
         #print(candidate_count_list)
+        #print(max_candidate_count)
 
 report_list = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 
@@ -111,14 +117,14 @@ for name in report_list:
     print(str(name[0]) + ":   " + str(name[1]) + "  (" + str(name[2])+ ")")
 
 print("-"*40)
-print ("Winner: " + str(winner))
+print ("Winner: " + max_candidate_count[0])
 print("-"*40)
 
 #-------------------------------------------------------------------------------
 
 # Write *.txt file
 
-lines = ["Election Results: ", "-"*80, "Total Votes Cast: " + str(total_votes_cast), "-"*80, str(report_list), "-"*80, "Winner: " (winner), "-"*80]
+lines = ["Election Results: ", "-"*80, "Total Votes Cast: " + str(total_votes_cast), "-"*80, str(name[0]) + ":   " + str(name[1]) + "  (" + str(name[2])+ ")", "-"*80, "Winner: " (max_candidate_count[0]), "-"*80]
 with open(export_file, 'w') as datafile:
     for line in lines:
         datafile.write(line)
