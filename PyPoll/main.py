@@ -43,8 +43,8 @@ with open(import_file, encoding='utf-8') as import_data:
         if candidate not in candidates_list:
             candidates_list.append(row[2])
 
-    print(total_votes_cast)
-    print(candidates_list)
+    #print(total_votes_cast)
+    #print(candidates_list)
 
 
 
@@ -52,10 +52,12 @@ with open(import_file, encoding='utf-8') as import_data:
 #Candidate calculation inside candidate_list loop
 
 
-for candidate in candidates_list:
-
     candidate_percentage_list = []
     candidate_count_list = []
+
+for candidate in candidates_list:
+
+
     candidate_count = 0
     
     
@@ -75,14 +77,14 @@ for candidate in candidates_list:
             if candidate == row[2]:
                 candidate_count += 1
 
-        candidate_count_list.append(str(candidate_count))
-        print(candidate_count_list)
-        print(candidate_count)
+
         percentage_of_votes = str(round(candidate_count / total_votes_cast * 100, 3)) + "%"
-        print(percentage_of_votes)
+        #print(percentage_of_votes)
         candidate_percentage_list.append(percentage_of_votes)
-        print(candidate_percentage_list)
+        #print(candidate_percentage_list)
         candidate_count_list.append(candidate_count)
+        
+        #reset the counts to 0
         percentage_of_votes = 0
         candidate_count = 0
 
@@ -91,22 +93,26 @@ for candidate in candidates_list:
 
 report_list = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 
-for name in report_list:
-    print(report_list)
+#for name in report_list:
+#    print(name)
 
 #-------------------------------------------------------------------------------
 
 # Write to Screen
 
-
+print("")
+print("")
 print("Election Results: ")
-print("-"*80)
+print("-"*40)
 print("Total Votes Cast: " + str(total_votes_cast))
-print("-"*80)
-print(report_list)
-print("-"*80)
-print ("Winner: " + winner)
-print("-"*80)
+print("-"*40)
+
+for name in report_list:
+    print(str(name[0]) + ":   " + str(name[1]) + "  (" + str(name[2])+ ")")
+
+print("-"*40)
+print ("Winner: " + str(winner))
+print("-"*40)
 
 #-------------------------------------------------------------------------------
 
