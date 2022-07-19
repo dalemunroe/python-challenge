@@ -14,6 +14,7 @@ import csv
 import_file = os.path.join('Resources','election_data.csv')
 export_file = os.path.join('analysis','election_analysis.txt')
 
+
 # Variables for tracking calculation data
 
 total_votes_cast = 0
@@ -98,7 +99,6 @@ for candidate in candidates_list:
         #print(max_candidate_count)
 
 report_list = zip(candidates_list, candidate_percentage_list, candidate_count_list)
-report_list1 = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 
 #for name in report_list:
 #    print(name)
@@ -121,34 +121,28 @@ print("-"*40)
 print ("Winner: " + max_candidate_count[0])
 print("-"*40)
 
-#-------------------------------------------------------------------------------
-
+#-----------------------------------------------------------------------------
 # Write *.txt file
+
+
+zxc = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 
 lines = ["Election Results: ", 
     "-"*80, 
-    "Total Votes Cast: " + str(total_votes_cast), 
-    "-"*80,
+    "Total Votes Cast: " + str(total_votes_cast),
+    "-"*80
     ]
     
 with open(export_file, 'w') as datafile:
-    for line in lines:
-        datafile.write(line)
+    for line in zxc:
+        datafile.write(f"{line[0]} + {line[1]}")
         datafile.write('\n')
 
-#for name in report_list1: 
-#    lines = [str(name[0]) + ":   " + str(name[1]) + "  (" + str(name[2])+ ")"]
-
-#with open(export_file, 'a') as datafile:
-#    for line in lines:
-#        datafile.writerows([report_list1])
-#        datafile.write('\n')
-
 lines = [
-    "-"*80,
+     "-"*80,
     "Winner: " + (max_candidate_count[0]), 
     "-"*80]
-
+    
 with open(export_file, 'a') as datafile:
     for line in lines:
         datafile.write(line)
