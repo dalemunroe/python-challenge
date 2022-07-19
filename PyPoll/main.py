@@ -95,9 +95,7 @@ for candidate in candidates_list:
         percentage_of_votes = 0
         candidate_count = 0
 
-        #print(candidate_percentage_list)        
-        #print(candidate_count_list)
-        #print(max_candidate_count)
+
 
 #---------------------------------------------------------------------------------
 
@@ -106,8 +104,6 @@ for candidate in candidates_list:
 report_list = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 report_list_txt = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 
-#for name in report_list:
-#    print(name)
 
 #-------------------------------------------------------------------------------
 
