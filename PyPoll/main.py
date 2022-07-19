@@ -7,9 +7,10 @@
 from cmath import exp
 from fileinput import close
 import os
-
 import csv
 
+
+#Set Paths
 
 import_file = os.path.join('Resources','election_data.csv')
 export_file = os.path.join('analysis','election_analysis.txt')
@@ -25,6 +26,7 @@ max_candidate_count = ["",0]
 
 
 # Read CSV into a Dictionary
+
 with open(import_file, encoding='utf-8') as import_data:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -47,9 +49,8 @@ with open(import_file, encoding='utf-8') as import_data:
     #print(total_votes_cast)
     #print(candidates_list)
 
-
-
 #------------------------------------------------------------------------------
+
 #Candidate calculation inside candidate_list loop
 
 
@@ -98,7 +99,12 @@ for candidate in candidates_list:
         #print(candidate_count_list)
         #print(max_candidate_count)
 
+#---------------------------------------------------------------------------------
+
+#Set Zip Lists for printing / report
+
 report_list = zip(candidates_list, candidate_percentage_list, candidate_count_list)
+report_list_txt = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 
 #for name in report_list:
 #    print(name)
@@ -122,20 +128,23 @@ print ("Winner: " + max_candidate_count[0])
 print("-"*40)
 
 #-----------------------------------------------------------------------------
+
 # Write *.txt file
-
-
-zxc = zip(candidates_list, candidate_percentage_list, candidate_count_list)
 
 lines = ["Election Results: ", 
     "-"*80, 
     "Total Votes Cast: " + str(total_votes_cast),
     "-"*80
     ]
-    
+
 with open(export_file, 'w') as datafile:
-    for line in zxc:
-        datafile.write(f"{line[0]} + {line[1]}")
+    for line in lines:
+        datafile.write(line)
+        datafile.write('\n')
+
+with open(export_file, 'a') as datafile:
+    for line in report_list_txt :
+        datafile.write(f"{line[0]} : {line[1]} ({line[2]})")
         datafile.write('\n')
 
 lines = [
